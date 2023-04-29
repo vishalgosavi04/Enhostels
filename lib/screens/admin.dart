@@ -15,14 +15,19 @@ class _adminState extends State<admin> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Owner"),
+        title: Text("Menu"),
+        leading:  IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.of(context).pop();
+              }),
         actions: [
           IconButton(
             onPressed: () {
-              logout(context);
+              //logout(context);
             },
             icon: Icon(
-              Icons.logout,
+              Icons.add_circle_outline,
             ),
           )
         ],

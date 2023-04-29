@@ -15,17 +15,17 @@ class _allusersState extends State<allusers> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Allusers"),
-        actions: [
-          IconButton(
-            onPressed: () {
-              logout(context);
-            },
-            icon: Icon(
-              Icons.logout,
-            ),
-          )
-        ],
+        title: Text("Menu"),
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {
+        //       //logout(context);
+        //     },
+        //     icon: Icon(
+        //       Icons.add_circle_outline,
+        //     ),
+        //   )
+        // ],
       ),
     );
   }

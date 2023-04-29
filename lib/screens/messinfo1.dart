@@ -1,5 +1,10 @@
 import 'package:enhostels/screens/hostellist.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:enhostels/screens/admin.dart';
+import 'package:enhostels/screens/allusers.dart';
+
 class Messinfopage1 extends StatefulWidget {
   const Messinfopage1({super.key});
 
@@ -142,7 +147,10 @@ class _Messinfopage1State extends State<Messinfopage1> {
 
             GestureDetector(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>HostelListScreen()));
+                _route();
+
+
+                //Navigator.push(context, MaterialPageRoute(builder: (context)=>HostelListScreen()));
               },
 
               child: Container(
@@ -156,7 +164,7 @@ class _Messinfopage1State extends State<Messinfopage1> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.location_on, color: Colors.white),
+                    Icon(Icons.food_bank, color: Colors.white),
                     const SizedBox(width: 10),
                     Text(
                       'Check Menu ',
@@ -173,5 +181,35 @@ class _Messinfopage1State extends State<Messinfopage1> {
         )
       ),
     );
+  }
+  
+  void _route() {
+    User? user = FirebaseAuth.instance.currentUser;
+    var kk = FirebaseFirestore.instance
+            .collection('users')
+            .doc(user!.uid)
+            .get()
+            .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        if (documentSnapshot.get('rool') == "Owner") {
+           Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>  admin(),
+          ),
+        );
+        }else{
+          Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>  allusers(),
+          ),
+        );
+        }
+      } else {
+        print('Document does not exist on the database');
+      }
+    });
+  
   }
 }
