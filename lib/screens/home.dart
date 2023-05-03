@@ -1,18 +1,21 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:enhostels/screens/app_style.dart';
 import 'package:enhostels/screens/hostellist.dart';
 import 'package:enhostels/screens/messllist.dart';
 import 'package:enhostels/screens/main_copy.dart';
+import 'package:enhostels/screens/profile.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
+import "package:firebase_auth/firebase_auth.dart";
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+  final _auth = FirebaseAuth.instance;
 
   void _onItemTapped(int index){
     setState(() {
@@ -30,11 +33,14 @@ class _HomeScreenState extends State<HomeScreen> {
           Navigator.push(context, MaterialPageRoute(builder: (context)=>HostelListScreen()));
           break;
         case 3:
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>HostelListScreen()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>Profilescreen()));
           break;
      }
   }
-  
+
+  User? user = FirebaseAuth.instance.currentUser;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,6 +117,29 @@ Drawer _drawer(BuildContext context) {
   return Drawer(
     backgroundColor: Colors.white,
     surfaceTintColor: Colors.black,
+    child: ListView(
+      children: [
+        StreamBuilder(
+          stream: FirebaseFirestore.instance.collection("users").snapshots(),
+          builder: (context ,AsyncSnapshot<QuerySnapshot> snapshot){
+            if(snapshot.hasData){
+              return ListView.builder(
+                itemCount: snapshot.data!.docs.length,
+                shrinkWrap: true,
+                itemBuilder: (context,i){
+                var data = snapshot.data!.docs[i];
+
+                return UserAccountsDrawerHeader(accountName: Text(data['name']), accountEmail: Text(data['email']));
+              });
+            }else{
+              return CircularProgressIndicator();
+            }
+          }
+          
+          
+        )
+      ],
+    ),
     
   );
 }

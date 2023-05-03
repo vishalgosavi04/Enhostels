@@ -1,4 +1,5 @@
 import 'package:enhostels/main.dart';
+import 'package:enhostels/screens/app_style.dart';
 import 'package:enhostels/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   final _formkey = GlobalKey<FormState>();
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
+  final TextEditingController nameController = new TextEditingController();
 
   final _auth = FirebaseAuth.instance;
   @override
@@ -29,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           children: <Widget>[
             Container(
-              color: Colors.white,
+              color: kYellow,
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 1.0,
               child: Center(
@@ -53,7 +55,32 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 50,
+                        ),
+                        TextFormField(
+                          controller: nameController,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Color.fromARGB(255, 177, 174, 174),
+                            hintText: 'Name',
+                            enabled: true,
+                            contentPadding: const EdgeInsets.only(
+                                left: 14.0, bottom: 8.0, top: 8.0),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: new BorderSide(color: Colors.white),
+                              borderRadius: new BorderRadius.circular(10),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: new BorderSide(color: Colors.white),
+                              borderRadius: new BorderRadius.circular(10),
+                            ),
+                          ),
+                          
+                          onSaved: (value) {},
+                          keyboardType: TextInputType.name,
+                        ),
+                        SizedBox(
+                          height: 30,
                         ),
                         TextFormField(
                           controller: emailController,
@@ -91,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                           keyboardType: TextInputType.emailAddress,
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 30,
                         ),
                         TextFormField(
                           controller: passwordController,
@@ -139,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                        
                         SizedBox(
-                          height: 20,
+                          height: 30,
                         ),
                         MaterialButton(
                           
@@ -158,10 +185,11 @@ class _LoginPageState extends State<LoginPage> {
                           child: Text(
                             "Login",
                             style: TextStyle(
+                              color: Colors.white,
                               fontSize: 20,
                             ),
                           ),
-                          color: Color.fromARGB(255, 237, 133, 14),
+                          color: Colors.black,
                         ),
                         SizedBox(
                           height: 10,
@@ -173,7 +201,7 @@ class _LoginPageState extends State<LoginPage> {
                             visible: visible,
                             child: Container(
                                 child: CircularProgressIndicator(
-                              color: Colors.white,
+                              color: Colors.black,
                             ))),
                       ],
                     ),

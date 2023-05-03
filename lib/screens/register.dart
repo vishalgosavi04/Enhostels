@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:enhostels/screens/app_style.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'login.dart';
@@ -22,9 +23,9 @@ class _RegisterState extends State<Register> {
   final TextEditingController passwordController = new TextEditingController();
   final TextEditingController confirmpassController =
       new TextEditingController();
-  final TextEditingController name = new TextEditingController();
+  final TextEditingController nameController= new TextEditingController();
   final TextEditingController emailController = new TextEditingController();
-  final TextEditingController mobile = new TextEditingController();
+  final TextEditingController mobileController = new TextEditingController();
   bool _isObscure = true;
   bool _isObscure2 = true;
   File? file;
@@ -38,12 +39,12 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange[900],
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
-              color: Colors.orangeAccent[700],
+              color: kYellow,
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               child: SingleChildScrollView(
@@ -62,7 +63,7 @@ class _RegisterState extends State<Register> {
                           "Register Now",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 40,
                           ),
                         ),
@@ -71,6 +72,56 @@ class _RegisterState extends State<Register> {
                         ),
                         SizedBox(
                           height: 50,
+                        ),
+                        TextFormField(
+                          controller: nameController,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: 'Name',
+                            enabled: true,
+                            contentPadding: const EdgeInsets.only(
+                                left: 14.0, bottom: 8.0, top: 8.0),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: new BorderSide(color: Colors.white),
+                              borderRadius: new BorderRadius.circular(20),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: new BorderSide(color: Colors.white),
+                              borderRadius: new BorderRadius.circular(20),
+                            ),
+                          ),
+                          
+                          onChanged: (value) {},
+                          keyboardType: TextInputType.name,
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        TextFormField(
+                          controller: mobileController,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.white,
+                            hintText: 'Phone',
+                            enabled: true,
+                            contentPadding: const EdgeInsets.only(
+                                left: 14.0, bottom: 8.0, top: 8.0),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: new BorderSide(color: Colors.white),
+                              borderRadius: new BorderRadius.circular(20),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: new BorderSide(color: Colors.white),
+                              borderRadius: new BorderRadius.circular(20),
+                            ),
+                          ),
+                          
+                          onChanged: (value) {},
+                          keyboardType: TextInputType.phone,
+                        ),
+                        SizedBox(
+                          height: 20,
                         ),
                         TextFormField(
                           controller: emailController,
@@ -201,11 +252,11 @@ class _RegisterState extends State<Register> {
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                             ),
                             DropdownButton<String>(
-                              dropdownColor: Colors.blue[900],
+                              dropdownColor: Colors.white,
                               isDense: true,
                               isExpanded: false,
                               iconEnabledColor: Colors.white,
@@ -216,7 +267,7 @@ class _RegisterState extends State<Register> {
                                   child: Text(
                                     dropDownStringItem,
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: Colors.black,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20,
                                     ),
@@ -258,10 +309,11 @@ class _RegisterState extends State<Register> {
                               child: Text(
                                 "Login",
                                 style: TextStyle(
+                                  color: Colors.white,
                                   fontSize: 20,
                                 ),
                               ),
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                             MaterialButton(
                               shape: RoundedRectangleBorder(
@@ -273,16 +325,17 @@ class _RegisterState extends State<Register> {
                                 setState(() {
                                   showProgress = true;
                                 });
-                                signUp(emailController.text,
+                                signUp(nameController.text,mobileController.toString(),emailController.text,
                                     passwordController.text, rool);
                               },
                               child: Text(
                                 "Register",
                                 style: TextStyle(
+                                  color: Colors.white,
                                   fontSize: 20,
                                 ),
                               ),
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                           ],
                         ),
@@ -301,21 +354,21 @@ class _RegisterState extends State<Register> {
     );
   }
 
-  void signUp(String email, String password, String rool) async {
+  void signUp(String name,String mobile ,String email, String password, String rool) async {
     CircularProgressIndicator();
     if (_formkey.currentState!.validate()) {
       await _auth
           .createUserWithEmailAndPassword(email: email, password: password)
-          .then((value) => {postDetailsToFirestore(email, rool)})
+          .then((value) => {postDetailsToFirestore(name , mobile,email, rool)})
           .catchError((e) {});
     }
   }
 
-  postDetailsToFirestore(String email, String rool) async {
+  postDetailsToFirestore( String name,String mobile,String email, String rool) async {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     var user = _auth.currentUser;
     CollectionReference ref = FirebaseFirestore.instance.collection('users');
-    ref.doc(user!.uid).set({'email': emailController.text, 'rool': rool});
+    ref.doc(user!.uid).set({'name':nameController.text,'mobile':mobileController.toString(),'email': emailController.text, 'rool': rool});
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => LoginPage()));
   }

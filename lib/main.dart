@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:enhostels/screens/home.dart';
 import 'package:enhostels/screens/hostel_info.dart';
+import 'package:enhostels/screens/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:enhostels/screens/hostel_info.dart';
 import 'package:enhostels/screens/hostelinfo1.dart';
@@ -14,6 +15,7 @@ import 'package:enhostels/screens/app_style.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:enhostels/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:enhostels/screens/profile2.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
