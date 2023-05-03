@@ -49,54 +49,66 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: _appbar(),
         body: _bodyofscreen(context),
         drawer: _drawer(context),
-        bottomNavigationBar: SingleChildScrollView(
-          child: SizedBox(
-            height:70,
-            child: BottomNavigationBar(
-              backgroundColor: kYellow,
-              items:[
-                BottomNavigationBarItem(
-                  backgroundColor: kYellow,
-                  icon: _selectedIndex==0?
-                Image.asset('assets/images/home2.png',height: 40,width: 40,):
-                Image.asset('assets/images/home2.png',height: 40,width: 40,),
-                  label:'',
-                ),
-                BottomNavigationBarItem(
-                  backgroundColor: kYellow,
-                  icon: _selectedIndex==1?
-                  Image.asset('assets/images/meal.png',height: 40,width: 40,):
-                  Image.asset('assets/images/meal.png',height: 40,width: 40,),
-                  label:'',
-                ),
-                BottomNavigationBarItem(
-                  backgroundColor: kYellow,
-                  icon: _selectedIndex==2?
-                  Image.asset('assets/images/bed.png',height: 40,width: 40,):
-                  Image.asset('assets/images/bed.png',height: 40,width: 40,),
-                  label:'',
-                ),
-                BottomNavigationBarItem(
-                  backgroundColor: kYellow,
-                  icon: _selectedIndex==3?
-                  Image.asset('assets/images/user.png',height: 40,width: 40,):
-                  Image.asset('assets/images/user.png',height: 40,width: 40,),
-                  label:'',
-                ),
-              ],
-              currentIndex: _selectedIndex,
-              onTap: _onItemTapped,
-            ),
+        bottomNavigationBar:
+        Container(
+          decoration: BoxDecoration(
+            boxShadow: <BoxShadow>[
+              BoxShadow(
+                color: kBlack,
+                blurRadius: 10,
+              ),
+            ],
           ),
+          child: SingleChildScrollView(
+            child: SizedBox(
+              height:70,
+              child: BottomNavigationBar(
+                elevation: 50,
+                backgroundColor: kYellow,
+                items:[
+                  BottomNavigationBarItem(
+                    backgroundColor: kYellow,
+                    icon: _selectedIndex==0?
+                  Image.asset('assets/images/home2.png',height: 40,width: 40,):
+                  Image.asset('assets/images/home2.png',height: 40,width: 40,),
+                    label:'',
+                  ),
+                  BottomNavigationBarItem(
+                    backgroundColor: kYellow,
+                    icon: _selectedIndex==1?
+                    Image.asset('assets/images/meal.png',height: 40,width: 40,):
+                    Image.asset('assets/images/meal.png',height: 40,width: 40,),
+                    label:'',
+                  ),
+                  BottomNavigationBarItem(
+                    backgroundColor: kYellow,
+                    icon: _selectedIndex==2?
+                    Image.asset('assets/images/bed.png',height: 40,width: 40,):
+                    Image.asset('assets/images/bed.png',height: 40,width: 40,),
+                    label:'',
+                  ),
+                  BottomNavigationBarItem(
+                    backgroundColor: kYellow,
+                    icon: _selectedIndex==3?
+                    Image.asset('assets/images/user.png',height: 40,width: 40,):
+                    Image.asset('assets/images/user.png',height: 40,width: 40,),
+                    label:'',
+                  ),
+                ],
+                currentIndex: _selectedIndex,
+                onTap: _onItemTapped,
+              ),
+            ),
       ),
-      
+        ),
+
       );
     }
   
   _appbar() {
     return AppBar(
       backgroundColor: kYellow,
-      iconTheme: IconThemeData(color: Colors.black),
+      iconTheme: IconThemeData(color: kBlack),
       title: GestureDetector(
         onTap: (){
           print("search clicked");
@@ -115,8 +127,8 @@ class _HomeScreenState extends State<HomeScreen> {
 Drawer _drawer(BuildContext context) {
 
   return Drawer(
-    backgroundColor: Colors.white,
-    surfaceTintColor: Colors.black,
+    backgroundColor: kYellow,
+    surfaceTintColor: kBlack,
     child: ListView(
       children: [
         StreamBuilder(
@@ -149,28 +161,28 @@ Widget _bodyofscreen(BuildContext context) {
       child: ListView(
         children:[
           const SizedBox(
-            height:10,
+            height:40,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: kPaddingHorizontal,
-              vertical: 15.0,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SvgPicture.asset('assets/images/icons8-menu-48.svg',
-                  height: 30, width: 30,),
-                SvgPicture.asset('assets/images/search.svg',height: 30, width: 30,),
-              ],
-            ),
-          ),
-          const SizedBox(
-              height:0
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(
+          //     horizontal: kPaddingHorizontal,
+          //     vertical: 15.0,
+          //   ),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     crossAxisAlignment: CrossAxisAlignment.center,
+          //     children: [
+          //       SvgPicture.asset('assets/images/icons8-menu-48.svg',
+          //         height: 30, width: 30,),
+          //       SvgPicture.asset('assets/images/search.svg',height: 30, width: 30,),
+          //     ],
+          //   ),
+          // ),
+          // const SizedBox(
+          //     height:0
+          // ),
           SizedBox(
-            height: 200,
+            height: 210,
             child: Stack(
               children: [
                 //Welcome Box
@@ -180,85 +192,78 @@ Widget _bodyofscreen(BuildContext context) {
                   right: 0,
                   bottom: 0,
                   child:Image.asset(
-                    'assets/images/asset_1.png',
+                    'assets/images/asset_1_2.png',
                   ),
                 ),
                 //Logo
-                Positioned(
-                  left: 20,
-                  right: 230,
-                  top: 20,
-                  bottom:20,
-                  child: Image.asset('assets/images/Final_black.png'),
-                ),
+                // Positioned(
+                //   left: 20,
+                //   right: 230,
+                //   top: 20,
+                //   bottom:20,
+                //   child: Image.asset('assets/images/Final_black.png'),
+                // ),
                 //Welcome Text
                 Positioned(
-                    left: 170,
+                    left: 140,
                     right: 0,
                     top: 0,
-                    bottom:100,
+                    bottom:120,
                     child:Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children:[
-                          Text('Welcome to,',style:kSourceSansProBold.copyWith(
+                          Text('Welcome to',style:kSourceSansProBold.copyWith(
                             fontSize: 23,
                           )),
                         ]
                     )
                 ),
-                Positioned(
-                  left: 169,
-                  right: 20,
-                  top:0,
-                  bottom: 20,
-                  child:Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children:[
-                        Text(' ENHOSTELS',style:kSourceSansProBold.copyWith(
-                          fontSize: 30,
-                        )),
-                      ]
-                  ),
+                Container(
+                  margin: EdgeInsets.only(left:5,top:65),
+                  alignment: Alignment.center,
+                  child: Image.asset('assets/images/Red_Button.png',
+                      height: 270,
+                      width: 270,
+                      fit: BoxFit.cover),
                 ),
-                Positioned(
-                  left: 180,
-                  right: 20,
-                  top:80,
-                  bottom: 0,
-                  child:Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children:[
-                        Text('',style:kSourceSansProMedium.copyWith(
-                          fontSize:15,
-                        )),
-                      ]
-                  ),
-                ),
-                Positioned(
-                  left:0,
-                  top: 200,
-                  right: 0,
-                  bottom: 0,
-                  child:Image.asset(
-                    'assets/images/asset_1.png',
-                  ),
-                ),
+                // Positioned(
+                //   left: 180,
+                //   right: 20,
+                //   top:80,
+                //   bottom: 0,
+                //   child:Column(
+                //       crossAxisAlignment: CrossAxisAlignment.start,
+                //       mainAxisAlignment: MainAxisAlignment.center,
+                //       children:[
+                //         Text('',style:kSourceSansProMedium.copyWith(
+                //           fontSize:15,
+                //         )),
+                //       ]
+                //   ),
+                // ),
+                // Positioned(
+                //   left:0,
+                //   top: 200,
+                //   right: 0,
+                //   bottom: 0,
+                //   child:Image.asset(
+                //     'assets/images/asset_1.png',
+                //   ),
+                // ),
               ],
             ),
           ),
-          const SizedBox(
-              height:10
-          ),
+          // const SizedBox(
+          //     height:5
+          // ),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                margin: EdgeInsets.only(left:18,top:20),
+                margin: EdgeInsets.only(left:18,top:10),
                 alignment: Alignment.center,
                 child: Image.asset('assets/images/dorm.png',
                     height: 180,
@@ -266,7 +271,7 @@ Widget _bodyofscreen(BuildContext context) {
                     fit: BoxFit.cover),
               ),
               Container(
-                margin: EdgeInsets.only(right:18,top:20),
+                margin: EdgeInsets.only(right:18,top:10),
                 alignment: Alignment.center,
                 // height: 100,
                 // width: 100,
@@ -278,7 +283,7 @@ Widget _bodyofscreen(BuildContext context) {
             ],
           ),
           const SizedBox(
-              height:10
+              height:0,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

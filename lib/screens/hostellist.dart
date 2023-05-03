@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:enhostels/screens/app_style.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:enhostels/screens/hostelinfo1.dart';
@@ -20,7 +21,7 @@ class _HostelListScreenState extends State<HostelListScreen> {
   TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
 
-  Map<String, Widget> _orphanagePages = {
+  Map<String, Widget> _HostelPages = {
     "Aman Boy's Hostel": Hostelinfopage(),
     // 'Sneh Sawali Old Age Home': OrphanageInfoPage2(),
     // 'Jeeva Jyothi trust': InfoPage3(),
@@ -36,7 +37,7 @@ class _HostelListScreenState extends State<HostelListScreen> {
 
 
   ];
-  List<String> _orphanageNames = [
+  List<String> _HostelNames = [
     "Aman Boy's Hostel",
      'Sujay Hostel',
     // 'Jeeva Jyothi trust',
@@ -54,13 +55,13 @@ class _HostelListScreenState extends State<HostelListScreen> {
   ];
 
 
-  List<String> _filteredOrphanageNames = [];
+  List<String> _filteredHostelNames = [];
   List<String> _filteredimages=[];
   List<String> _filteredaddress =[];
   @override
   void initState() {
     super.initState();
-    _filteredOrphanageNames = _orphanageNames;
+    _filteredHostelNames = _HostelNames;
     _filteredimages =_images;
     _filteredaddress= _address;
   }
@@ -68,18 +69,18 @@ class _HostelListScreenState extends State<HostelListScreen> {
   void _updateSearchQuery(String query) {
     setState(() {
       _searchQuery = query;
-      _filteredOrphanageNames = _orphanageNames
+      _filteredHostelNames = _HostelNames
           .where(
               (name) => name.toLowerCase().contains(_searchQuery.toLowerCase()))
           .toList();
     });
   }
 
-  void _navigateToOrphanageDetailsScreen(String orphanageName) {
+  void _navigateToHostelDetailsScreen(String HostelName) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => _orphanagePages[orphanageName]!,
+        builder: (context) => _HostelPages[HostelName]!,
       ),
     );
   }
@@ -88,7 +89,7 @@ class _HostelListScreenState extends State<HostelListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: kGrey,
           // title: Text("HelpOut",
           //     style: TextStyle(
           //         color: Colors.white,
@@ -100,7 +101,7 @@ class _HostelListScreenState extends State<HostelListScreen> {
             decoration: InputDecoration(
                 hintText: 'Search ...',
                 border: InputBorder.none,
-                hintStyle: TextStyle(color: Colors.black, fontSize: 18)),
+                hintStyle: TextStyle(color:kBlack, fontSize: 18)),
           ),
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
@@ -108,9 +109,9 @@ class _HostelListScreenState extends State<HostelListScreen> {
                 Navigator.of(context).pop();
               })),
       body: ListView.builder(
-        itemCount: _filteredOrphanageNames.length,
+        itemCount: _filteredHostelNames.length,
         itemBuilder: (BuildContext context, int index) {
-          final orphanageIndex = index;
+          final HostelIndex = index;
           return Container(
             padding: const EdgeInsets.only(top: 15.0),
             margin: EdgeInsets.only(left: 15, right: 15, top: 20),
@@ -122,14 +123,14 @@ class _HostelListScreenState extends State<HostelListScreen> {
             child: GestureDetector(
                 onTap: () {
                   // Navigate to the page for the selected orphanage
-                  _navigateToOrphanageDetailsScreen(
-                      _filteredOrphanageNames[orphanageIndex]);
+                  _navigateToHostelDetailsScreen(
+                      _filteredHostelNames[HostelIndex]);
                 },
                 child: Container(
                   //padding: EdgeInsets.only(top: 30, left: 80),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 205, 206, 205),
+                      color: kYellow,
                       borderRadius: BorderRadius.circular(5)),
                   child: Expanded(
                     child: Row(
@@ -141,7 +142,7 @@ class _HostelListScreenState extends State<HostelListScreen> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5)
                           ),
-                          child: Image.asset(_filteredimages[orphanageIndex])),
+                          child: Image.asset(_filteredimages[HostelIndex])),
                         // Text(_filteredOrphanageNames[orphanageIndex],
                         // style: TextStyle(
                         //     color: Colors.black,
@@ -151,11 +152,11 @@ class _HostelListScreenState extends State<HostelListScreen> {
                           padding: const EdgeInsets.only(left:18.0, top:10, right: 20),
                           child: Column(
                               children: [
-                                 Text(_filteredOrphanageNames[orphanageIndex],style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),
+                                 Text(_filteredHostelNames[HostelIndex],style: TextStyle(fontSize: 20,color:kBlack,fontWeight: FontWeight.bold),),
                                  SizedBox(height: 5,),
-                                  Text(_filteredaddress[orphanageIndex],
+                                  Text(_filteredaddress[HostelIndex],
                                           style: TextStyle(
-                                          color: Colors.black,
+                                          color:kBlack,
                                           fontSize: 18,
                                         ))
                   ],

@@ -1,3 +1,4 @@
+import 'package:enhostels/screens/app_style.dart';
 import 'package:enhostels/screens/hostellist.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,7 +18,7 @@ class _Messinfopage1State extends State<Messinfopage1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: kGrey,
           title: const Text('Mess Details'),
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
@@ -39,7 +40,7 @@ class _Messinfopage1State extends State<Messinfopage1> {
                 width: 150,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.black,
+                  color: kBlack,
                 ),
                 
                child: Center(child: Image.asset('assets/images/hostel1.jpg')),
@@ -48,17 +49,17 @@ class _Messinfopage1State extends State<Messinfopage1> {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    Text(" Aman Hotel ",style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),
+                    Text(" Aman Hotel ",style: TextStyle(fontSize: 20,color: kBlack,fontWeight: FontWeight.bold),),
                     SizedBox(height: 5,),
                     Text("Dighi, Pune ,\n Maharashtra -411015",
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: kBlack,
                                   fontSize: 15,
                                   )),
                     SizedBox(height: 5,),
                     Row(
                       children: [
-                          Text(" Rating :  ",style: TextStyle(fontSize: 15,color: Colors.black,fontWeight: FontWeight.w400),),
+                          Text(" Rating :  ",style: TextStyle(fontSize: 15,color: kBlack,fontWeight: FontWeight.w400),),
                           Icon(Icons.star,size: 20,),
                           Icon(Icons.star,size: 20,),
                           Icon(Icons.star,size: 20,),
@@ -88,7 +89,7 @@ class _Messinfopage1State extends State<Messinfopage1> {
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 15),
                 decoration: BoxDecoration(
-                  color: Colors.green,
+                  color: kRed,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 padding:
@@ -96,11 +97,11 @@ class _Messinfopage1State extends State<Messinfopage1> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.call, color: Colors.white),
+                    Icon(Icons.call, color:kYellow),
                     const SizedBox(width: 10),
                     Text(
                       'Call +918856832824',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
+                      style: TextStyle(fontSize: 18, color: kYellow),
                     ),
                   ],
                 ),
@@ -125,7 +126,7 @@ class _Messinfopage1State extends State<Messinfopage1> {
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 15),
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: kBlue,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 padding:
@@ -133,11 +134,11 @@ class _Messinfopage1State extends State<Messinfopage1> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.location_on, color: Colors.white),
+                    Icon(Icons.location_on, color:kYellow),
                     const SizedBox(width: 10),
                     Text(
                       'View Location',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
+                      style: TextStyle(fontSize: 18, color:kYellow),
                     ),
                   ],
                 ),
@@ -156,7 +157,7 @@ class _Messinfopage1State extends State<Messinfopage1> {
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 15),
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 220, 92, 23),
+                  color:kGreen,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 padding:
@@ -164,11 +165,11 @@ class _Messinfopage1State extends State<Messinfopage1> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.food_bank, color: Colors.white),
+                    Icon(Icons.food_bank, color:kYellow),
                     const SizedBox(width: 10),
                     Text(
                       'Check Menu ',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
+                      style: TextStyle(fontSize: 18, color:kYellow),
                     ),
                   ],
                 ),

@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:enhostels/screens/hostelinfo1.dart';
 import 'package:enhostels/screens/messinfo1.dart';
+import 'package:enhostels/screens/app_style.dart';
 // import 'package:help_out/screens/infopage1.dart';
 // import 'package:help_out/screens/infopage2.dart';
 // import 'package:help_out/screens/infopage3.dart';
@@ -21,7 +22,7 @@ class _MessListScreenState extends State<MessListScreen> {
   TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
 
-  Map<String, Widget> _orphanagePages = {
+  Map<String, Widget> _messPages = {
     "Aman Hotel": Messinfopage1(),
     // 'Sneh Sawali Old Age Home': OrphanageInfoPage2(),
     // 'Jeeva Jyothi trust': InfoPage3(),
@@ -37,7 +38,7 @@ class _MessListScreenState extends State<MessListScreen> {
 
 
   ];
-  List<String> _orphanageNames = [
+  List<String> _messNames = [
     "Aman Hotel",
      'Sujay Hotel',
     // 'Jeeva Jyothi trust',
@@ -55,13 +56,13 @@ class _MessListScreenState extends State<MessListScreen> {
   ];
 
 
-  List<String> _filteredOrphanageNames = [];
+  List<String> _filteredMessNames = [];
   List<String> _filteredimages=[];
   List<String> _filteredaddress =[];
   @override
   void initState() {
     super.initState();
-    _filteredOrphanageNames = _orphanageNames;
+    _filteredMessNames = _messNames;
     _filteredimages =_images;
     _filteredaddress= _address;
   }
@@ -69,18 +70,18 @@ class _MessListScreenState extends State<MessListScreen> {
   void _updateSearchQuery(String query) {
     setState(() {
       _searchQuery = query;
-      _filteredOrphanageNames = _orphanageNames
+      _filteredMessNames = _messNames
           .where(
               (name) => name.toLowerCase().contains(_searchQuery.toLowerCase()))
           .toList();
     });
   }
 
-  void _navigateToOrphanageDetailsScreen(String orphanageName) {
+  void _navigateToMessDetailsScreen(String MessName) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => _orphanagePages[orphanageName]!,
+        builder: (context) => _messPages[MessName]!,
       ),
     );
   }
@@ -89,7 +90,7 @@ class _MessListScreenState extends State<MessListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: kGrey,
           // title: Text("HelpOut",
           //     style: TextStyle(
           //         color: Colors.white,
@@ -101,7 +102,7 @@ class _MessListScreenState extends State<MessListScreen> {
             decoration: InputDecoration(
                 hintText: 'Search ...',
                 border: InputBorder.none,
-                hintStyle: TextStyle(color: Colors.black, fontSize: 18)),
+                hintStyle: TextStyle(color: kBlack, fontSize: 18)),
           ),
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
@@ -109,9 +110,9 @@ class _MessListScreenState extends State<MessListScreen> {
                 Navigator.of(context).pop();
               })),
       body: ListView.builder(
-        itemCount: _filteredOrphanageNames.length,
+        itemCount: _filteredMessNames.length,
         itemBuilder: (BuildContext context, int index) {
-          final orphanageIndex = index;
+          final MessIndex = index;
           return Container(
             padding: const EdgeInsets.only(top: 15.0),
             margin: EdgeInsets.only(left: 15, right: 15, top: 20),
@@ -123,14 +124,14 @@ class _MessListScreenState extends State<MessListScreen> {
             child: GestureDetector(
                 onTap: () {
                   // Navigate to the page for the selected orphanage
-                  _navigateToOrphanageDetailsScreen(
-                      _filteredOrphanageNames[orphanageIndex]);
+                  _navigateToMessDetailsScreen(
+                      _filteredMessNames[MessIndex]);
                 },
                 child: Container(
                   //padding: EdgeInsets.only(top: 30, left: 80),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 205, 206, 205),
+                      color:kYellow,
                       borderRadius: BorderRadius.circular(5)),
                   child: Expanded(
                     child: Row(
@@ -142,7 +143,7 @@ class _MessListScreenState extends State<MessListScreen> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5)
                           ),
-                          child: Image.asset(_filteredimages[orphanageIndex])),
+                          child: Image.asset(_filteredimages[MessIndex])),
                         // Text(_filteredOrphanageNames[orphanageIndex],
                         // style: TextStyle(
                         //     color: Colors.black,
@@ -152,11 +153,11 @@ class _MessListScreenState extends State<MessListScreen> {
                           padding: const EdgeInsets.only(left:18.0, top:10, right: 20),
                           child: Column(
                               children: [
-                                 Text(_filteredOrphanageNames[orphanageIndex],style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),
+                                 Text(_filteredMessNames[MessIndex],style: TextStyle(fontSize: 20,color:kBlack,fontWeight: FontWeight.bold),),
                                  SizedBox(height: 5,),
-                                  Text(_filteredaddress[orphanageIndex],
+                                  Text(_filteredaddress[MessIndex],
                                           style: TextStyle(
-                                          color: Colors.black,
+                                          color:kBlack,
                                           fontSize: 18,
                                         ))
                   ],

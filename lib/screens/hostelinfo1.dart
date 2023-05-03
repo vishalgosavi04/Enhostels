@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:enhostels/screens/app_style.dart';
 class Hostelinfopage extends StatefulWidget {
   const Hostelinfopage({super.key});
 
@@ -11,7 +12,7 @@ class _HostelinfopageState extends State<Hostelinfopage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: kGrey,
           title: const Text('Hostel Details'),
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
@@ -33,7 +34,7 @@ class _HostelinfopageState extends State<Hostelinfopage> {
                 width: 150,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.black,
+                  color:kBlack,
                 ),
                 
                child: Center(child: Image.asset('assets/images/hostel1.jpg')),
@@ -42,17 +43,17 @@ class _HostelinfopageState extends State<Hostelinfopage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    Text(" Aman Boy's Hostel ",style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),
+                    Text(" Aman Boy's Hostel ",style: TextStyle(fontSize: 20,color:kBlack,fontWeight: FontWeight.bold),),
                     SizedBox(height: 5,),
                     Text("Dighi, Pune ,\n Maharashtra -411015",
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color:kBlack,
                                   fontSize: 15,
                                   )),
                     SizedBox(height: 5,),
                     Row(
                       children: [
-                          Text(" Rating :  ",style: TextStyle(fontSize: 15,color: Colors.black,fontWeight: FontWeight.w400),),
+                          Text(" Rating :  ",style: TextStyle(fontSize: 15,color:kBlack,fontWeight: FontWeight.w400),),
                           Icon(Icons.star,size: 20,),
                           Icon(Icons.star,size: 20,),
                           Icon(Icons.star,size: 20,),
@@ -82,7 +83,7 @@ class _HostelinfopageState extends State<Hostelinfopage> {
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 15),
                 decoration: BoxDecoration(
-                  color: Colors.green,
+                  color:kGreen,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 padding:
@@ -90,11 +91,11 @@ class _HostelinfopageState extends State<Hostelinfopage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.call, color: Colors.white),
+                    Icon(Icons.call, color:kYellow),
                     const SizedBox(width: 10),
                     Text(
                       'Call +918856832824',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
+                      style: TextStyle(fontSize: 18, color:kYellow),
                     ),
                   ],
                 ),
@@ -119,7 +120,7 @@ class _HostelinfopageState extends State<Hostelinfopage> {
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 15),
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color:kRed,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 padding:
@@ -127,32 +128,32 @@ class _HostelinfopageState extends State<Hostelinfopage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.location_on, color: Colors.white),
+                    Icon(Icons.location_on, color:kYellow),
                     const SizedBox(width: 10),
                     Text(
                       'View Location',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
+                      style: TextStyle(fontSize: 18, color:kYellow),
                     ),
                   ],
                 ),
               ),
             ),
             SizedBox(height: 25,),
-            Text("Facilites Provided", style: TextStyle(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold),),
+            Text("Facilites Provided", style: TextStyle(color: kBlack,fontSize: 20,fontWeight: FontWeight.bold),),
             SizedBox(height: 15,),
 
-            Text("1.  24 hrs water",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w500),),
+            Text("1.  24 hrs water",style: TextStyle(color: kBlack,fontSize: 18,fontWeight: FontWeight.w500),),
             SizedBox(height: 15,),
 
-            Text("1.  24 hrs water",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w500),),
+            Text("1.  24 hrs water",style: TextStyle(color:kBlack,fontSize: 18,fontWeight: FontWeight.w500),),
             SizedBox(height: 15,),
 
-            Text("1.  24 hrs water",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w500),),
+            Text("1.  24 hrs water",style: TextStyle(color:kBlack,fontSize: 18,fontWeight: FontWeight.w500),),
             SizedBox(height: 15,),
 
-            Text("1.  24 hrs water",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w500),),
+            Text("1.  24 hrs water",style: TextStyle(color:kBlack,fontSize: 18,fontWeight: FontWeight.w500),),
             SizedBox(height: 15,),
-            Text("1.  24 hrs water",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.w500),),
+            Text("1.  24 hrs water",style: TextStyle(color:kBlack,fontSize: 18,fontWeight: FontWeight.w500),),
 
             
           ],
