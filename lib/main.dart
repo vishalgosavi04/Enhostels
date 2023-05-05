@@ -47,7 +47,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: splash_screen()
+        home: splash_screen()
       );
   }
   

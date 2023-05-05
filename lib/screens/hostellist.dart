@@ -23,7 +23,7 @@ class _HostelListScreenState extends State<HostelListScreen> {
 
   Map<String, Widget> _HostelPages = {
     "Aman Boy's Hostel": Hostelinfopage(),
-    // 'Sneh Sawali Old Age Home': OrphanageInfoPage2(),
+     'sujay hostel ': Hostelinfopage(),
     // 'Jeeva Jyothi trust': InfoPage3(),
     // 'Nachiket Balgram': InfoPage4(),
     // 'Vriddh Anand Ashram': InfoPage5(),
@@ -83,7 +83,8 @@ class _HostelListScreenState extends State<HostelListScreen> {
         builder: (context) => _HostelPages[HostelName]!,
       ),
     );
-  }
+    }
+    
 
   @override
   Widget build(BuildContext context) {

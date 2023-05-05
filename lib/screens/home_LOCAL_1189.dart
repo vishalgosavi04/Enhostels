@@ -14,28 +14,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // final auth = FirebaseAuth.instance;
-  // final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  // @override
-//   void initstate() {
-//   super.initState();
-//   firebaseAuth.authStateChanges()
-//         .firstWhere((user) => user != null)
-//         .then((user) {
-//       final user_Name = user.name;
-//       //String image_Url = user.photoUrl;
-//       String email_Id = user.email;
-//       String user_Uuid = user.uid; // etc
-//       });
-  
-  
-//   // here you write the codes to input the data into firestore
-// }
   int _selectedIndex = 0;
-  final firebaseUser = FirebaseAuth.instance.currentUser;
-  String myemail='';
-  String name= '';
-
+  final _auth = FirebaseAuth.instance;
 
   void _onItemTapped(int index){
     setState(() {
@@ -58,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
      }
   }
 
-  
+  User? user = FirebaseAuth.instance.currentUser;
 
 
   @override
@@ -142,14 +122,39 @@ class _HomeScreenState extends State<HomeScreen> {
       ) ,
     );
   }
-  
-  _drawer(BuildContext context) {
-    return Drawer();
-  }
 }
 
+Drawer _drawer(BuildContext context) {
 
+  return Drawer(
+    backgroundColor: kYellow,
+    surfaceTintColor: kBlack,
+    child: ListView(
+      children: [
+        StreamBuilder(
+          stream: FirebaseFirestore.instance.collection("users").snapshots(),
+          builder: (context ,AsyncSnapshot<QuerySnapshot> snapshot){
+            if(snapshot.hasData){
+              return ListView.builder(
+                itemCount: snapshot.data!.docs.length,
+                shrinkWrap: true,
+                itemBuilder: (context,i){
+                var data = snapshot.data!.docs[i];
 
+                return UserAccountsDrawerHeader(accountName: Text(data['name']), accountEmail: Text(data['email']));
+              });
+            }else{
+              return CircularProgressIndicator();
+            }
+          }
+          
+          
+        )
+      ],
+    ),
+    
+  );
+}
 
 Widget _bodyofscreen(BuildContext context) {
   return SafeArea(
