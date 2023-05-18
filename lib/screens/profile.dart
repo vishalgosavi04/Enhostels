@@ -37,7 +37,7 @@ class _ProfilescreenState extends State<Profilescreen> {
           },
         ),
       ),
-      body:SafeArea(
+      body:Container(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 15),
           child: StreamBuilder<Object>(
@@ -55,6 +55,9 @@ class _ProfilescreenState extends State<Profilescreen> {
                name= userData['name'];
                mobile= userData['mobile'];
                image = userData['image'];
+               setState(() {
+                 
+               });
               }).catchError((e){
             print(e);
             });
@@ -78,7 +81,7 @@ class _ProfilescreenState extends State<Profilescreen> {
                               fit: BoxFit.cover,
                               image: NetworkImage("https://tse1.mm.bing.net/th?id=OIP.7PsWAogh67GuINH1j_YjXwHaHa&pid=Api&P=0"),
                               loadingBuilder: (context,child, loadingProgress){
-                                if(loadingProgress==Null){
+                                if(loadingProgress !=Null){
                                   return child;
                                 }
                                   return Center(child: CircularProgressIndicator(),);
@@ -143,9 +146,9 @@ class _ProfilescreenState extends State<Profilescreen> {
                         ),
                       ),
                     ]);
-                }
+               }
               else{
-                return Text("loading");
+               return Text("loading");
               }
             }
             else{

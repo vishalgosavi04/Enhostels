@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:enhostels/screens/app_style.dart';
-import 'package:enhostels/screens/hostellist.dart';
+import 'package:enhostels/screens/hostels/hostellist.dart';
 import 'package:enhostels/screens/messllist.dart';
 import 'package:enhostels/screens/main_copy.dart';
 import 'package:enhostels/screens/profile.dart';

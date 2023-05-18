@@ -1,19 +1,24 @@
-import 'package:enhostels/screens/app_style.dart';
-import 'package:enhostels/screens/hostels/hostellist.dart';
-import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:enhostels/screens/app_style.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:enhostels/screens/mess/admin.dart';
 import 'package:enhostels/screens/mess/allusers.dart';
 
-class Messinfopage1 extends StatefulWidget {
-  const Messinfopage1({super.key});
-
+class messinfo extends StatefulWidget {
+  //const Hostelinfo({super.key,});
+   String name,address,image,mobile;
+   messinfo({Key? key, required this.name, required this.address, required this.image,required this.mobile}) : super(key: key);
+  
   @override
-  State<Messinfopage1> createState() => _Messinfopage1State();
+  State<messinfo> createState() => _messinfoState(name,address, image,mobile);
 }
 
-class _Messinfopage1State extends State<Messinfopage1> {
+class _messinfoState extends State<messinfo> {
+  String name,address,image,mobile;
+  _messinfoState(this.name,this.address,this.image,this.mobile);
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,26 +45,26 @@ class _Messinfopage1State extends State<Messinfopage1> {
                 width: 150,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: kBlack,
+                  color:kBlack,
                 ),
                 
-               child: Center(child: Image.asset('assets/images/hostel1.jpg')),
+               child: Center(child: Image.network(image)),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    Text(" Aman Hotel ",style: TextStyle(fontSize: 20,color: kBlack,fontWeight: FontWeight.bold),),
+                    Text(name,style: TextStyle(fontSize: 20,color:kBlack,fontWeight: FontWeight.bold),),
                     SizedBox(height: 5,),
-                    Text("Dighi, Pune ,\n Maharashtra -411015",
+                    Text(address,
                               style: TextStyle(
-                                  color: kBlack,
+                                  color:kBlack,
                                   fontSize: 15,
                                   )),
                     SizedBox(height: 5,),
                     Row(
                       children: [
-                          Text(" Rating :  ",style: TextStyle(fontSize: 15,color: kBlack,fontWeight: FontWeight.w400),),
+                          Text(" Rating :  ",style: TextStyle(fontSize: 15,color:kBlack,fontWeight: FontWeight.w400),),
                           Icon(Icons.star,size: 20,),
                           Icon(Icons.star,size: 20,),
                           Icon(Icons.star,size: 20,),
@@ -76,20 +81,20 @@ class _Messinfopage1State extends State<Messinfopage1> {
             SizedBox(height: 40,),
             GestureDetector(
               onTap: () async {
-                // final Uri url = Uri(
-                //   scheme: 'tel',
-                //   path: "885 683 2824",
-                // );
-                // if (await canLaunchUrl(url)) {
-                //   await launchUrl(url);
-                // } else {
-                //   print('cannot launch this url');
-                // }
+                final Uri url = Uri(
+                  scheme: 'tel',
+                  path: mobile,
+                );
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
+                } else {
+                  print('cannot launch this url');
+                }
               },
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 15),
                 decoration: BoxDecoration(
-                  color: kRed,
+                  color:kGreen,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 padding:
@@ -100,8 +105,8 @@ class _Messinfopage1State extends State<Messinfopage1> {
                     Icon(Icons.call, color:kYellow),
                     const SizedBox(width: 10),
                     Text(
-                      'Call +918856832824',
-                      style: TextStyle(fontSize: 18, color: kYellow),
+                      'Call +91$mobile',
+                      style: TextStyle(fontSize: 18, color:kYellow),
                     ),
                   ],
                 ),
@@ -126,7 +131,7 @@ class _Messinfopage1State extends State<Messinfopage1> {
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 15),
                 decoration: BoxDecoration(
-                  color: kBlue,
+                  color:kRed,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 padding:
@@ -144,8 +149,7 @@ class _Messinfopage1State extends State<Messinfopage1> {
                 ),
               ),
             ),
-            SizedBox(height: 30,),
-
+            SizedBox(height: 25,),
             GestureDetector(
               onTap: () {
                 _route();
@@ -176,14 +180,11 @@ class _Messinfopage1State extends State<Messinfopage1> {
               ),
             ),
             
-            
-            
           ],
         )
       ),
     );
   }
-  
   void _route() {
     User? user = FirebaseAuth.instance.currentUser;
     var kk = FirebaseFirestore.instance

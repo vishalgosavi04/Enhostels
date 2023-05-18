@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-final FirebaseAuth _auth = FirebaseAuth.instance;
+
 class splash_screen extends StatefulWidget {
   const splash_screen({super.key});
 
@@ -14,7 +14,7 @@ class splash_screen extends StatefulWidget {
 }
 
 class _splash_screenState extends State<splash_screen> {
-
+final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   void initState() {
     // TODO: implement initState

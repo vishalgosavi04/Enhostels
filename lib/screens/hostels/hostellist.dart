@@ -1,8 +1,14 @@
+import 'package:enhostels/screens/hostel_info.dart';
+import 'package:enhostels/screens/hostels/hostelinfo.dart';
 import 'package:flutter/material.dart';
 import 'package:enhostels/screens/app_style.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:enhostels/screens/hostelinfo1.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 // import 'package:help_out/screens/infopage1.dart';
 // import 'package:help_out/screens/infopage2.dart';
 // import 'package:help_out/screens/infopage3.dart';
@@ -21,71 +27,9 @@ class _HostelListScreenState extends State<HostelListScreen> {
   TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
 
-  Map<String, Widget> _HostelPages = {
-    "Aman Boy's Hostel": Hostelinfopage(),
-     'sujay hostel ': Hostelinfopage(),
-    // 'Jeeva Jyothi trust': InfoPage3(),
-    // 'Nachiket Balgram': InfoPage4(),
-    // 'Vriddh Anand Ashram': InfoPage5(),
-    // 'Adarana Charitable trust': InfoPage6(),
-    // 'shanti sahyog old age home': InfoPage7(),
-    // 'Naad Foundation': InfoPage8()
-  };
-  List<String> _images=[
-    'assets/images/hostel1.jpg',
-    'assets/images/hostel2.jpg',
-
-
-  ];
-  List<String> _HostelNames = [
-    "Aman Boy's Hostel",
-     'Sujay Hostel',
-    // 'Jeeva Jyothi trust',
-    // 'Nachiket Balgram',
-    // 'Vriddh Anand Ashram',
-    // 'Adarana Charitable trust',
-    // 'shanti sahyog old age home',
-    // 'Naad Foundation'
-  ];
-
-  List<String> _address = [
-    "Akurdi, Pune",
-    "Akurdi, Pune",
-
-  ];
-
-
-  List<String> _filteredHostelNames = [];
-  List<String> _filteredimages=[];
-  List<String> _filteredaddress =[];
-  @override
-  void initState() {
-    super.initState();
-    _filteredHostelNames = _HostelNames;
-    _filteredimages =_images;
-    _filteredaddress= _address;
-  }
-
-  void _updateSearchQuery(String query) {
-    setState(() {
-      _searchQuery = query;
-      _filteredHostelNames = _HostelNames
-          .where(
-              (name) => name.toLowerCase().contains(_searchQuery.toLowerCase()))
-          .toList();
-    });
-  }
-
-  void _navigateToHostelDetailsScreen(String HostelName) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => _HostelPages[HostelName]!,
-      ),
-    );
-    }
-    
-
+  
+  final auth = FirebaseAuth.instance;
+  final ref = FirebaseDatabase.instance.ref('hostels');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,22 +40,25 @@ class _HostelListScreenState extends State<HostelListScreen> {
           //         color: Colors.white,
           //         fontStyle: FontStyle.normal,
           //         fontSize: 26.0)),
-          title: TextField(
-            controller: _searchController,
-            onChanged: _updateSearchQuery,
-            decoration: InputDecoration(
-                hintText: 'Search ...',
-                border: InputBorder.none,
-                hintStyle: TextStyle(color:kBlack, fontSize: 18)),
-          ),
+          title: Text("Hostels"),
           leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.of(context).pop();
               })),
-      body: ListView.builder(
-        itemCount: _filteredHostelNames.length,
-        itemBuilder: (BuildContext context, int index) {
+      body: FirebaseAnimatedList(
+        query: ref,
+        itemBuilder: (context,snapshot,animation, index) {
+          var _image = snapshot.child('image').value.toString();
+          var _name = snapshot.child('name').value.toString();
+          var _address = snapshot.child('address').value.toString();
+          var mobile= snapshot.child('mobile').value.toString();
+          var fac1= snapshot.child('facility1').value.toString();
+          var fac2= snapshot.child('facility2').value.toString();
+          var fac3= snapshot.child('facility3').value.toString();
+          var fac4= snapshot.child('facility4').value.toString();
+          var fac5= snapshot.child('facility5').value.toString();
+          var locationurl= snapshot.child("locationurl").value.toString();
           final HostelIndex = index;
           return Container(
             padding: const EdgeInsets.only(top: 15.0),
@@ -124,8 +71,14 @@ class _HostelListScreenState extends State<HostelListScreen> {
             child: GestureDetector(
                 onTap: () {
                   // Navigate to the page for the selected orphanage
-                  _navigateToHostelDetailsScreen(
-                      _filteredHostelNames[HostelIndex]);
+                  // _navigateToHostelDetailsScreen(
+                  //     _filteredHostelNames[HostelIndex]);
+                   Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                  builder: (context) => Hostelinfo(name: _name,address:_address,image: _image,mobile: mobile,facility1: fac1,facility2: fac2,facility3: fac3,facility4: fac4,facility5: fac5,locationUrl: locationurl),
+                  ),
+    );
                 },
                 child: Container(
                   //padding: EdgeInsets.only(top: 30, left: 80),
@@ -143,7 +96,8 @@ class _HostelListScreenState extends State<HostelListScreen> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5)
                           ),
-                          child: Image.asset(_filteredimages[HostelIndex])),
+                          child: Image.network(_image)
+                          ),
                         // Text(_filteredOrphanageNames[orphanageIndex],
                         // style: TextStyle(
                         //     color: Colors.black,
@@ -153,9 +107,9 @@ class _HostelListScreenState extends State<HostelListScreen> {
                           padding: const EdgeInsets.only(left:18.0, top:10, right: 20),
                           child: Column(
                               children: [
-                                 Text(_filteredHostelNames[HostelIndex],style: TextStyle(fontSize: 20,color:kBlack,fontWeight: FontWeight.bold),),
+                                 Text(snapshot.child('name').value.toString(),style: TextStyle(fontSize: 20,color:kBlack,fontWeight: FontWeight.bold),),
                                  SizedBox(height: 5,),
-                                  Text(_filteredaddress[HostelIndex],
+                                  Text(snapshot.child('address').value.toString(),
                                           style: TextStyle(
                                           color:kBlack,
                                           fontSize: 18,

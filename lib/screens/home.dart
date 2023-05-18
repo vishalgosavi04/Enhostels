@@ -1,12 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:enhostels/screens/app_style.dart';
-import 'package:enhostels/screens/hostellist.dart';
+import 'package:enhostels/screens/hostels/addhostel2.dart';
+import 'package:enhostels/screens/hostels/hostellist.dart';
 import 'package:enhostels/screens/messllist.dart';
 import 'package:enhostels/screens/main_copy.dart';
 import 'package:enhostels/screens/profile.dart';
+import 'package:enhostels/screens/splashscreen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import "package:firebase_auth/firebase_auth.dart";
+import 'package:enhostels/screens/hostels/showhostellist.dart';
+import 'package:enhostels/screens/mess/addmess.dart';
+import 'package:enhostels/screens/mess/messlist.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
   @override
@@ -35,6 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final firebaseUser = FirebaseAuth.instance.currentUser;
   String myemail='';
   String name= '';
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
 
 
   void _onItemTapped(int index){
@@ -47,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
           break;
         case 1:
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>MessListScreen()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>MessList()));
           break;
         case 2:
           Navigator.push(context, MaterialPageRoute(builder: (context)=>HostelListScreen()));
@@ -144,7 +152,38 @@ class _HomeScreenState extends State<HomeScreen> {
   }
   
   _drawer(BuildContext context) {
-    return Drawer();
+    return Drawer(
+      child: ListView(
+        children: [
+          GestureDetector(
+            onTap: (){
+               Navigator.push(context,MaterialPageRoute(builder: (context)=>addhostel2()));
+            },
+            child: ListTile(
+              title: Text("Add Hostel"),
+            ),
+          ),
+          GestureDetector(
+            onTap: (){
+               Navigator.push(context,MaterialPageRoute(builder: (context)=>addmess()));
+            },
+            child: ListTile(
+              title: Text("Add Mess"),
+            ),
+          ),
+          ListTile(
+          title: Text("signout",
+              style: TextStyle(fontSize: 20)),
+          onTap: () async {
+            await _auth.signOut();
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => splash_screen()),
+            );
+          }),
+        ],
+      ),
+    );
   }
 }
 
@@ -253,66 +292,70 @@ Widget _bodyofscreen(BuildContext context) {
           //     height:5
           // ),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                margin: EdgeInsets.only(left:18,top:10),
-                alignment: Alignment.center,
-                child: Image.asset('assets/images/dorm.png',
-                    height: 180,
-                    width: 180,
-                    fit: BoxFit.cover),
-              ),
-              Container(
-                margin: EdgeInsets.only(right:18,top:10),
-                alignment: Alignment.center,
-                // height: 100,
-                // width: 100,
-                child: Image.asset('assets/images/dcanteen.png',
-                    height: 180,
-                    width: 180,
-                    fit: BoxFit.cover),
-              ),
-            ],
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(left:18,top:10),
+                  alignment: Alignment.center,
+                  child: Image.asset('assets/images/dorm.png',
+                      height: 180,
+                      width: 180,
+                      fit: BoxFit.cover),
+                ),
+                Container(
+                  margin: EdgeInsets.only(right:18,top:10),
+                  alignment: Alignment.center,
+                  // height: 100,
+                  // width: 100,
+                  child: Image.asset('assets/images/dcanteen.png',
+                      height: 180,
+                      width: 180,
+                      fit: BoxFit.cover),
+                ),
+              ],
+            ),
           ),
           const SizedBox(
               height:0,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              GestureDetector(
-                onTap: (){
-                  Navigator.push(context,MaterialPageRoute(builder: (context)=>HostelListScreen()));
-                },
-                child: Container(
-                  margin: EdgeInsets.only(left:18,top:20),
-                  alignment: Alignment.center,
-                  child: Image.asset('assets/images/dorm_button.png',
-                      height: 45,
-                      width: 180,
-                      fit: BoxFit.cover),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>HostelListScreen()));
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(left:18,top:20),
+                    alignment: Alignment.center,
+                    child: Image.asset('assets/images/dorm_button.png',
+                        height: 45,
+                        width: 180,
+                        fit: BoxFit.cover),
+                  ),
                 ),
-              ),
-              GestureDetector(
-                onTap: (){
-                  Navigator.push(context,MaterialPageRoute(builder: (context)=>MessListScreen()));
-                },
-                child: Container(
-                  margin: EdgeInsets.only(right:18,top:20),
-                  alignment: Alignment.center,
-                  // height: 100,
-                  // width: 100,
-                  child: Image.asset('assets/images/food_button.png',
-                      height: 45,
-                      width: 180,
-                      fit: BoxFit.cover),
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=>MessList()));
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(right:18,top:20),
+                    alignment: Alignment.center,
+                    // height: 100,
+                    // width: 100,
+                    child: Image.asset('assets/images/food_button.png',
+                        height: 45,
+                        width: 180,
+                        fit: BoxFit.cover),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           )
 
         ],

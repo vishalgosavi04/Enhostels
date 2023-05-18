@@ -4,8 +4,8 @@ import 'package:enhostels/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'allusers.dart';
-import 'admin.dart';
+import 'mess/allusers.dart';
+import 'mess/admin.dart';
 import 'register.dart';
 
 

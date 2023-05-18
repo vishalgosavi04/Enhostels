@@ -368,7 +368,7 @@ class _RegisterState extends State<Register> {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     var user = _auth.currentUser;
     CollectionReference ref = FirebaseFirestore.instance.collection('users');
-    ref.doc(user!.uid).set({'name':nameController.text,'mobile':mobileController.text,'email': emailController.text, 'rool': rool});
+    ref.doc(user!.uid).set({'name':nameController.text,'mobile':mobileController.text,'email': emailController.text, 'rool': rool,});
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => LoginPage()));
   }
