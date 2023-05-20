@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:geolocator/geolocator.dart';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -13,10 +15,14 @@ class addmess extends StatefulWidget {
 }
 
 class _addmessState extends State<addmess> {
+  final currentuser = FirebaseAuth.instance.currentUser;
   final databaseref = FirebaseDatabase.instance.ref('mess');
   final namecontroller = TextEditingController();
   final addresscontroller = TextEditingController();
   final mobilecontroller = TextEditingController();
+  late String lat;
+  late String long;
+  late String googleurl;
   var newurl;
   bool loading = false;
   File? _image;
@@ -98,6 +104,25 @@ class _addmessState extends State<addmess> {
               ),
             ),
             SizedBox(height:30),
+            GestureDetector(
+              onTap: (){
+                _getcurrentlocation().then((value) => {
+                  lat = "${value.latitude}",
+                  long = "${value.longitude}",
+                  googleurl = 'https://www.google.com/maps/search/?api=1&query=$lat,$long',   
+                });
+              }, 
+              child: Container(
+                height: 35,
+                padding: EdgeInsets.only(left:120,top: 5),
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(10)
+                ),
+                child: Text("Get the location",style: TextStyle(color: Colors.white,fontSize: 16),)
+              )
+              ),
+            SizedBox(height:30),
             Center(
               child: GestureDetector(
                 onTap: () {
@@ -106,16 +131,18 @@ class _addmessState extends State<addmess> {
                   });
                   firebase_storage.Reference ref = firebase_storage.FirebaseStorage.instance.ref('/hostel/'+ DateTime.now().microsecondsSinceEpoch.toString());
                   firebase_storage.UploadTask uploadTask= ref.putFile(_image!.absolute);
+                  String id = DateTime.now().microsecondsSinceEpoch.toString();
                   Future.value(uploadTask).then((value) async=> {
                      newurl = await ref.getDownloadURL(),
 
-
-                    databaseref.child(DateTime.now().millisecondsSinceEpoch.toString()).set({
+                    
+                    databaseref.child(id).set({
                     "name": namecontroller.text.toString(),
                     "mobile": mobilecontroller.text.toString(),
                     "address": addresscontroller.text.toString(),
-                    "image": newurl.toString()
-                    
+                    "image": newurl.toString(),
+                    "locationurl":googleurl,
+                    "id":id,
                     }).then((value) => {
                     setState(() {
                     loading= false;
@@ -147,5 +174,24 @@ class _addmessState extends State<addmess> {
           ]), 
       ),
     );
+  }
+  Future<Position> _getcurrentlocation() async{
+    bool serviceenabled = await Geolocator.isLocationServiceEnabled();
+    if(!serviceenabled){
+      return Future.error("Location services are disabled. ");
+    }
+
+    LocationPermission permission= await Geolocator.checkPermission();
+    if(permission== LocationPermission.denied){
+      permission= await Geolocator.requestPermission();
+      if(permission== LocationPermission.denied){
+        return Future.error("Location Permission are Denied. ");
+      }
+    }
+    if(permission== LocationPermission.deniedForever){
+      return Future.error("Location permission are permanently denied");
+    }
+    return await Geolocator.getCurrentPosition();
+
   }
 }

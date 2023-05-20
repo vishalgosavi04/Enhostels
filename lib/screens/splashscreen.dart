@@ -21,7 +21,7 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
     super.initState();
     //_navigatetohome();
     Timer(Duration(seconds: 5), () {
-      if(_auth.currentUser!=null){
+      if(_auth.currentUser==null){
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Register()));
       }
       else{

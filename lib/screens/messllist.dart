@@ -1,8 +1,8 @@
+import 'package:enhostels/screens/messinfo1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:enhostels/screens/hostelinfo1.dart';
-import 'package:enhostels/screens/messinfo1.dart';
 import 'package:enhostels/screens/app_style.dart';
 // import 'package:help_out/screens/infopage1.dart';
 // import 'package:help_out/screens/infopage2.dart';

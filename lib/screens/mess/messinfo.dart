@@ -5,19 +5,20 @@ import 'package:enhostels/screens/app_style.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:enhostels/screens/mess/admin.dart';
 import 'package:enhostels/screens/mess/allusers.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class messinfo extends StatefulWidget {
   //const Hostelinfo({super.key,});
-   String name,address,image,mobile;
-   messinfo({Key? key, required this.name, required this.address, required this.image,required this.mobile}) : super(key: key);
+   String name,address,image,mobile,locationUrl,id;
+   messinfo({Key? key, required this.name, required this.address, required this.image,required this.mobile,required this.locationUrl,required this.id}) : super(key: key);
   
   @override
-  State<messinfo> createState() => _messinfoState(name,address, image,mobile);
+  State<messinfo> createState() => _messinfoState(name,address, image,mobile,locationUrl,id);
 }
 
 class _messinfoState extends State<messinfo> {
-  String name,address,image,mobile;
-  _messinfoState(this.name,this.address,this.image,this.mobile);
+  String name,address,image,mobile,locationUrl,id;
+  _messinfoState(this.name,this.address,this.image,this.mobile,this.locationUrl,this.id);
   
   @override
   Widget build(BuildContext context) {
@@ -117,15 +118,12 @@ class _messinfoState extends State<messinfo> {
             const SizedBox(height: 25),
             GestureDetector(
               onTap: () async {
-                // var url = Uri.parse(
-                //     'https://www.google.com/maps/place/Dnyandeep+Balgruha/@18.623014,73.8680463,15z/data=!4m6!3m5!1s0x3bc2c70a82e7be9d:0xea151d5f8315cad7!8m2!3d18.623014!4d73.8680463!16s%2Fg%2F11g6bskpn8?hl=en-US');
-                // // ignore: deprecated_member_use
-                // if (await canLaunchUrl(url)) {
-                //   // ignore: deprecated_member_use
-                //   await launchUrl(url);
-                // } else {
-                //   throw 'Could not launch $url';
-                // }
+                if(canLaunchUrlString(locationUrl)!= null) {
+                  await launchUrlString(locationUrl);
+                } 
+                else{
+                  throw "could not launch $locationUrl";
+                } 
               },
 
               child: Container(
@@ -197,14 +195,14 @@ class _messinfoState extends State<messinfo> {
            Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) =>  admin(),
+            builder: (context) =>  admin(id:id,),
           ),
         );
         }else{
           Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) =>  allusers(),
+            builder: (context) =>  allusers(id: id,),
           ),
         );
         }

@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
   String myemail='';
   String name= '';
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
+  bool _canPop = false;
 
 
   void _onItemTapped(int index){
@@ -71,66 +71,102 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        resizeToAvoidBottomInset: true,
-        backgroundColor: kYellow,
-        appBar: _appbar(),
-        body: _bodyofscreen(context),
-        drawer: _drawer(context),
-        bottomNavigationBar:
-        Container(
-          decoration: BoxDecoration(
-            boxShadow: <BoxShadow>[
-              BoxShadow(
-                color: kBlack,
-                blurRadius: 10,
-              ),
-            ],
-          ),
-          child: SingleChildScrollView(
-            child: SizedBox(
-              height:70,
-              child: BottomNavigationBar(
-                elevation: 50,
-                backgroundColor: kYellow,
-                items:[
-                  BottomNavigationBarItem(
-                    backgroundColor: kYellow,
-                    icon: _selectedIndex==0?
-                  Image.asset('assets/images/home2.png',height: 40,width: 40,):
-                  Image.asset('assets/images/home2.png',height: 40,width: 40,),
-                    label:'',
-                  ),
-                  BottomNavigationBarItem(
-                    backgroundColor: kYellow,
-                    icon: _selectedIndex==1?
-                    Image.asset('assets/images/meal.png',height: 40,width: 40,):
-                    Image.asset('assets/images/meal.png',height: 40,width: 40,),
-                    label:'',
-                  ),
-                  BottomNavigationBarItem(
-                    backgroundColor: kYellow,
-                    icon: _selectedIndex==2?
-                    Image.asset('assets/images/bed.png',height: 40,width: 40,):
-                    Image.asset('assets/images/bed.png',height: 40,width: 40,),
-                    label:'',
-                  ),
-                  BottomNavigationBarItem(
-                    backgroundColor: kYellow,
-                    icon: _selectedIndex==3?
-                    Image.asset('assets/images/user.png',height: 40,width: 40,):
-                    Image.asset('assets/images/user.png',height: 40,width: 40,),
-                    label:'',
-                  ),
-                ],
-                currentIndex: _selectedIndex,
-                onTap: _onItemTapped,
-              ),
+    return WillPopScope(
+      onWillPop: () async {
+          // Do not allow user to go back to login page
+          // Navigator.of(context).popUntil((route) => route.isFirst);
+          // return false;
+          if (_canPop) {
+          return true;
+        } else {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: Text("Alert"),
+              content: Text("Are you sure you want to exit?"),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text("No"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      _canPop = true;
+                    });
+                    Navigator.of(context).pop();
+                  },
+                  child: Text("Yes"),
+                ),
+              ],
             ),
-      ),
+          );
+          return false;
+        }
+        },
+      child: Scaffold(
+          resizeToAvoidBottomInset: true,
+          backgroundColor: kYellow,
+          appBar: _appbar(),
+          body: _bodyofscreen(context),
+          drawer: _drawer(context),
+          bottomNavigationBar:
+          Container(
+            decoration: BoxDecoration(
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                  color: kBlack,
+                  blurRadius: 10,
+                ),
+              ],
+            ),
+            child: SingleChildScrollView(
+              child: SizedBox(
+                height:70,
+                child: BottomNavigationBar(
+                  elevation: 50,
+                  backgroundColor: kYellow,
+                  items:[
+                    BottomNavigationBarItem(
+                      backgroundColor: kYellow,
+                      icon: _selectedIndex==0?
+                    Image.asset('assets/images/home2.png',height: 40,width: 40,):
+                    Image.asset('assets/images/home2.png',height: 40,width: 40,),
+                      label:'',
+                    ),
+                    BottomNavigationBarItem(
+                      backgroundColor: kYellow,
+                      icon: _selectedIndex==1?
+                      Image.asset('assets/images/meal.png',height: 40,width: 40,):
+                      Image.asset('assets/images/meal.png',height: 40,width: 40,),
+                      label:'',
+                    ),
+                    BottomNavigationBarItem(
+                      backgroundColor: kYellow,
+                      icon: _selectedIndex==2?
+                      Image.asset('assets/images/bed.png',height: 40,width: 40,):
+                      Image.asset('assets/images/bed.png',height: 40,width: 40,),
+                      label:'',
+                    ),
+                    BottomNavigationBarItem(
+                      backgroundColor: kYellow,
+                      icon: _selectedIndex==3?
+                      Image.asset('assets/images/user.png',height: 40,width: 40,):
+                      Image.asset('assets/images/user.png',height: 40,width: 40,),
+                      label:'',
+                    ),
+                  ],
+                  currentIndex: _selectedIndex,
+                  onTap: _onItemTapped,
+                ),
+              ),
         ),
-
-      );
+          ),
+    
+        ),
+    );
     }
   
   _appbar() {

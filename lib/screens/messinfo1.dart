@@ -148,7 +148,7 @@ class _Messinfopage1State extends State<Messinfopage1> {
 
             GestureDetector(
               onTap: () {
-                _route();
+               // _route();
 
 
                 //Navigator.push(context, MaterialPageRoute(builder: (context)=>HostelListScreen()));
@@ -184,33 +184,33 @@ class _Messinfopage1State extends State<Messinfopage1> {
     );
   }
   
-  void _route() {
-    User? user = FirebaseAuth.instance.currentUser;
-    var kk = FirebaseFirestore.instance
-            .collection('users')
-            .doc(user!.uid)
-            .get()
-            .then((DocumentSnapshot documentSnapshot) {
-      if (documentSnapshot.exists) {
-        if (documentSnapshot.get('rool') == "Owner") {
-           Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>  admin(),
-          ),
-        );
-        }else{
-          Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>  allusers(),
-          ),
-        );
-        }
-      } else {
-        print('Document does not exist on the database');
-      }
-    });
+  // void _route() {
+  //   User? user = FirebaseAuth.instance.currentUser;
+  //   var kk = FirebaseFirestore.instance
+  //           .collection('users')
+  //           .doc(user!.uid)
+  //           .get()
+  //           .then((DocumentSnapshot documentSnapshot) {
+  //     if (documentSnapshot.exists) {
+  //       if (documentSnapshot.get('rool') == "Owner") {
+  //          Navigator.pushReplacement(
+  //         context,
+  //         MaterialPageRoute(
+  //           builder: (context) =>  allusers(),
+  //         ),
+  //       );
+  //       }else{
+  //         Navigator.pushReplacement(
+  //         context,
+  //         MaterialPageRoute(
+  //           builder: (context) =>  allusers(),
+  //         ),
+  //       );
+  //       }
+  //     } else {
+  //       print('Document does not exist on the database');
+  //     }
+  //   });
   
-  }
+  //}
 }

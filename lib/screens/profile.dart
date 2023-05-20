@@ -45,22 +45,27 @@ class _ProfilescreenState extends State<Profilescreen> {
             builder: (context,AsyncSnapshot snapshot) {
 
              if(currentuser!=null){
-             FirebaseFirestore.instance
+            
+                FirebaseFirestore.instance
             .collection("users")
             .doc(currentuser!.uid)
             .get()
             .then((ds) {
-              Map<dynamic, dynamic> userData = ds.data() as Map<dynamic, dynamic>;
-               myemail= userData['email'];
-               name= userData['name'];
-               mobile= userData['mobile'];
-               image = userData['image'];
-               setState(() {
-                 
-               });
+              
+                Map<dynamic, dynamic> userData = ds.data() as Map<dynamic, dynamic>;
+                  myemail= userData['email'];
+                  name= userData['name'];
+                  mobile= userData['mobile'];
+                  image = userData['image'];
+                  setState(() {
+                    
+                  });
+               
               }).catchError((e){
             print(e);
             });
+            
+             
               if(myemail!=null && name!= null&& mobile!=null&&image!=null){
                    return Column(
                     mainAxisAlignment: MainAxisAlignment.start,
