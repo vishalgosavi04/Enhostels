@@ -56,6 +56,7 @@ class _MessListState extends State<MessList> {
           var mobile= snapshot.child('mobile').value.toString();
           var locationUrl= snapshot.child("locationurl").value.toString();
           var id = snapshot.child("id").value.toString();
+          var userid = snapshot.child("userid").value.toString();
           final HostelIndex = index;
           return Container(
             padding: const EdgeInsets.only(top: 15.0),
@@ -73,7 +74,7 @@ class _MessListState extends State<MessList> {
                    Navigator.push(
                   context,
                   MaterialPageRoute(
-                  builder: (context) => messinfo(name: _name,address:_address,image: _image,mobile: mobile,locationUrl: locationUrl,id:id),
+                  builder: (context) => messinfo(name: _name,address:_address,image: _image,mobile: mobile,locationUrl: locationUrl,id:id,userid: userid),
                   ),
     );
                 },

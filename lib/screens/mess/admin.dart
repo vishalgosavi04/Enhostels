@@ -3,23 +3,23 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
 import '../login.dart';
 
 class admin extends StatefulWidget {
-  String id;
-  admin({Key? key, required this.id}) : super(key: key);
+  String id,userid;
+  admin({Key? key, required this.id,required this.userid}) : super(key: key);
 
 
   @override
-  State<admin> createState() => _adminState(id);
+  State<admin> createState() => _adminState(id,userid);
 }
 
 class _adminState extends State<admin> {
-  String id;
-  _adminState(this.id);
+  String id,userid;
+  _adminState(this.id,this.userid);
   final currentuser = FirebaseAuth.instance.currentUser;
-  final userid = FirebaseAuth.instance.currentUser!.uid;
+  final newuserid = FirebaseAuth.instance.currentUser!.uid;
   DatabaseReference databaseref = FirebaseDatabase.instance.ref("mess");
   late DatabaseReference newdbref= FirebaseDatabase.instance.ref("mess").child(id).child("menu");
   TextEditingController itemcontroller = TextEditingController();
@@ -73,7 +73,18 @@ class _adminState extends State<admin> {
               backgroundColor: kGrey,
               tooltip: "Add new item",
               onPressed:(){
-                dialogPopup("Add a new item");
+                if(userid==newuserid){
+                  dialogPopup("Add a new item");
+                }
+                else{
+                  Fluttertoast.showToast(
+                    msg: "You are not allowed to change the menu",
+                    gravity: ToastGravity.BOTTOM,
+                    textColor: Colors.white,
+                    backgroundColor: kGrey
+                    );
+                }
+                
               } ,
               child: Icon(Icons.add),
               ),

@@ -143,6 +143,7 @@ class _addmessState extends State<addmess> {
                     "image": newurl.toString(),
                     "locationurl":googleurl,
                     "id":id,
+                    "userid":currentuser!.uid,
                     }).then((value) => {
                     setState(() {
                     loading= false;

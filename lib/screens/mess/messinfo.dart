@@ -9,16 +9,16 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 class messinfo extends StatefulWidget {
   //const Hostelinfo({super.key,});
-   String name,address,image,mobile,locationUrl,id;
-   messinfo({Key? key, required this.name, required this.address, required this.image,required this.mobile,required this.locationUrl,required this.id}) : super(key: key);
+   String name,address,image,mobile,locationUrl,id,userid;
+   messinfo({Key? key, required this.name, required this.address, required this.image,required this.mobile,required this.locationUrl,required this.id,required this.userid}) : super(key: key);
   
   @override
-  State<messinfo> createState() => _messinfoState(name,address, image,mobile,locationUrl,id);
+  State<messinfo> createState() => _messinfoState(name,address, image,mobile,locationUrl,id,userid);
 }
 
 class _messinfoState extends State<messinfo> {
-  String name,address,image,mobile,locationUrl,id;
-  _messinfoState(this.name,this.address,this.image,this.mobile,this.locationUrl,this.id);
+  String name,address,image,mobile,locationUrl,id,userid;
+  _messinfoState(this.name,this.address,this.image,this.mobile,this.locationUrl,this.id,this.userid);
   
   @override
   Widget build(BuildContext context) {
@@ -195,7 +195,7 @@ class _messinfoState extends State<messinfo> {
            Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) =>  admin(id:id,),
+            builder: (context) =>  admin(id:id,userid: userid),
           ),
         );
         }else{
