@@ -14,7 +14,7 @@ class splash_screen extends StatefulWidget {
 }
 
 class _splash_screenState extends State<splash_screen> {
-final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   void initState() {
     // TODO: implement initState
@@ -37,7 +37,7 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
   Widget build(BuildContext context) {
     return Scaffold(
         body:Center(child:
-        Image.asset("assets/images/splash_screen.png"))
+        Image.asset("assets/images/splash_screen_2.png",height: 200,width: 200,))
     );
   }
 }
