@@ -1,6 +1,6 @@
 # Enhostels
 
-A new Flutter project.
+Developed a user-friendly app using Flutter and Firebase database to provide college students and working professionals with real-time updates on food menus at nearby restaurants and messes. Integrated functionality to provide information about nearby hostels, making it convenient for users to find suitable accommodations. Enabled users to easily locate restaurants and hostels with just a few taps on their mobile devices.
 
 ## Getting Started
 
