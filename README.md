@@ -15,7 +15,8 @@ Developed a user-friendly app using Flutter and Firebase database to provide col
 <img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/12fcb3cc-435f-48b5-991d-f22e62cd32f0" width="300">
 
 <img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/e274aacd-b671-40b4-97af-6762f8aa4615" width="300">
- ### Sign up screen:- 
+
+### Sign up screen:- 
 Our first screen is the login screen  where we need your name, email address and password to make your account and get you registered in our app. Now your account is created!! Be sure to remember your credentials as they would be
 used in the next screen to login.
 .
