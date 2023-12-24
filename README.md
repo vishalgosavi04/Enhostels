@@ -89,6 +89,3 @@ Flutter is mobile app development framework that allows to build cross-platform 
 
 Firebase is a platform where real-time database storage, authentication and analytics is done.This helps our app to improve and grow. We have used this to handle user authentication and to store data of all the orphanages,old-age homes and NGOs.
 
-## Author
-### Vishal Gosavi
-linkedin:- https://www.linkedin.com/in/vishal-gosavi/
