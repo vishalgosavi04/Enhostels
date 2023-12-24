@@ -22,6 +22,12 @@ used in the next screen to login.
 .
 <img src= "https://github.com/vishalgosavi04/Enhostels/assets/124982672/3f0a40eb-71a0-45ce-8974-a243d72da987" width= "300">
 
+
+### Login Screen:-
+Then you get directed to the login screen where you have to enter the same credentials you used to sign-up.
+<img src ="https://github.com/vishalgosavi04/Enhostels/assets/124982672/03117ede-74c9-4036-8cb8-8a1e2134c292" width="300">
+<img src ="https://github.com/vishalgosavi04/Enhostels/assets/124982672/96df0ff7-089a-487c-a890-f15a87516c9a" width="300">
+<img src ="https://github.com/vishalgosavi04/Enhostels/assets/124982672/3aa02534-3fd8-4c1a-81d5-025530e0cc81" width="300">
 <img src= "https://github.com/vishalgosavi04/Enhostels/assets/124982672/488aa91d-a233-47f4-a118-b0804afb86c2" width= "300">
 <img src= "https://github.com/vishalgosavi04/Enhostels/assets/124982672/462d2226-b27b-45e0-9025-be948ded0905" width= "300">
 <img src= "https://github.com/vishalgosavi04/Enhostels/assets/124982672/e7067505-1ebe-476d-8efe-1ad17cf130ce" width= "300">
