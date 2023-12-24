@@ -58,6 +58,7 @@ Mess List Screen shows a list of messes and restaurants in the area, facilitatin
 Add Hostel Page allows owners to add information about new hostels to the application.
 
 <img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/e57fc5db-c436-44c2-875d-0406da590173" width="300">
+<img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/81ecda99-27f8-45d0-89a1-f3f91d6b5add" width= "300">
 
 ### Add Mess Page
 It enables users to add details about new messes or restaurants.
