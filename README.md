@@ -35,9 +35,13 @@ The main screen providing an overview of essential features and navigation optio
 
 <img src= "https://github.com/vishalgosavi04/Enhostels/assets/124982672/9c7f61e3-6cbb-4496-a7b3-ef8e27938d67" width= "300">
 
+### Profile Screen
+User profile screen displaying personal information such as Name, Email, Profile Image, Mobile Number, etc.
+
 <img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/e274aacd-b671-40b4-97af-6762f8aa4615" width="300">
 
-
+### Hostels List Screen and Hostel Description Screen
+Hostel list screen displays a list of nearby hostels with key information. Hostels Description screen displays detailed information about a specific hostel, including location, address, and contact details.
 <img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/e57fc5db-c436-44c2-875d-0406da590173" width="300">
 <img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/94effa87-1e55-4876-b248-04645c7eb0bf" width="300">
 <img src= "https://github.com/vishalgosavi04/Enhostels/assets/124982672/488aa91d-a233-47f4-a118-b0804afb86c2" width= "300">
