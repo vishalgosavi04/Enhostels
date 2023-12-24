@@ -6,11 +6,9 @@ Developed a user-friendly app using Flutter and Firebase database to provide col
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Technologies used
+Flutter and Firebase has been used to make our project. 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Flutter is mobile app development framework that allows to build cross-platform apps for android,ios and web using single codebase. By using framework we were able to make an visually appealing and responsive user-interface.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Firebase is a platform where real-time database storage, authentication and analytics is done.This helps our app to improve and grow. We have used this to handle user authentication and to store data of all the orphanages,old-age homes and NGOs.
