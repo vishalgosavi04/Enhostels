@@ -2,6 +2,9 @@
 
 Developed a user-friendly app using Flutter and Firebase database to provide college students and working professionals with real-time updates on food menus at nearby restaurants and messes. Integrated functionality to provide information about nearby hostels, making it convenient for users to find suitable accommodations. Enabled users to easily locate restaurants and hostels with just a few taps on their mobile devices.
 
+##Screenshots
+![Screenshot_20231012_123924](https://github.com/vishalgosavi04/Enhostels/assets/124982672/12fcb3cc-435f-48b5-991d-f22e62cd32f0)
+
 ## Steps to run app
 
 1.Install and setup flutter in your machine. Install Android studio or VS code the run in code. Also install all the extensions required. 
