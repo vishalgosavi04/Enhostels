@@ -10,11 +10,11 @@ Developed a user-friendly app using Flutter and Firebase database to provide col
 
 - Dynamic Food Menus: Stay updated on the changing food menus of messes. Only the mess owner has the authority to update the menu.
 
-
-
+## Screenshots
+### Splash Screen
+A welcoming splash screen that appears when the app is launched.
 <img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/12fcb3cc-435f-48b5-991d-f22e62cd32f0" width="300">
 
-<img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/e274aacd-b671-40b4-97af-6762f8aa4615" width="300">
 
 ### Sign up screen:- 
 Our first screen is the login screen  where we need your name, email address and password to make your account and get you registered in our app. Now your account is created!! Be sure to remember your credentials as they would be
@@ -26,6 +26,11 @@ used in the next screen to login.
 ### Login Screen:-
 Then you get directed to the login screen where you have to enter the same credentials you used to sign-up.
 <img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/e57fc5db-c436-44c2-875d-0406da590173" width="300">
+
+<img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/e274aacd-b671-40b4-97af-6762f8aa4615" width="300">
+
+
+
 <img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/f6d1105b-7fc4-42c6-a6ae-f3ee7c514259" width="300">
 <img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/94effa87-1e55-4876-b248-04645c7eb0bf" width="300">
 <img src= "https://github.com/vishalgosavi04/Enhostels/assets/124982672/488aa91d-a233-47f4-a118-b0804afb86c2" width= "300">
