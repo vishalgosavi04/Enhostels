@@ -5,7 +5,7 @@ Developed a user-friendly app using Flutter and Firebase database to provide col
 ## screenshots
 Screenshots
 ![Screenshot_20231012_123924](https://github.com/vishalgosavi04/Enhostels/assets/124982672/12fcb3cc-435f-48b5-991d-f22e62cd32f0)
-
+<img src="https://i.imgur.com/f4Mt6hA.png" width="300">
 ## Steps to run app
 
 1.Install and setup flutter in your machine. Install Android studio or VS code the run in code. Also install all the extensions required. 
