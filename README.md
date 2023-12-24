@@ -7,7 +7,7 @@ Developed a user-friendly app using Flutter and Firebase database to provide col
 This project is a starting point for a Flutter application.
 
 ## Technologies used
-Flutter and Firebase has been used to make our project. 
+Flutter and Firebase has been used to make project. 
 
 Flutter is mobile app development framework that allows to build cross-platform apps for android,ios and web using single codebase. By using framework we were able to make an visually appealing and responsive user-interface.
 
