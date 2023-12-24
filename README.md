@@ -43,20 +43,25 @@ User profile screen displaying personal information such as Name, Email, Profile
 ### Hostels List Screen and Hostel Description Screen
 Hostel list screen displays a list of nearby hostels with key information. Hostels Description screen displays detailed information about a specific hostel, including location, address, and contact details.
 
-<img src= "https://github.com/vishalgosavi04/Enhostels/assets/124982672/488aa91d-a233-47f4-a118-b0804afb86c2" width= "300">
 <img src= "https://github.com/vishalgosavi04/Enhostels/assets/124982672/c9ef01ef-0bfb-4722-81bd-d1cf59deef0b" width= "300">
+<img src= "https://github.com/vishalgosavi04/Enhostels/assets/124982672/488aa91d-a233-47f4-a118-b0804afb86c2" width= "300">
+
 
 ### Mess List Screen and Mess Description Screen and Separate Menu Page for Each Screen
 Mess List Screen shows a list of messes and restaurants in the area, facilitating quick exploration. Mess Description Screen displays comprehensive details about a particular mess or restaurant, including location and contact information. Dynamic menu pages specific to each mess, showcasing changing food options.
 
-<img src= "https://github.com/vishalgosavi04/Enhostels/assets/124982672/e7067505-1ebe-476d-8efe-1ad17cf130ce" width= "300">
-
 <img src = "https://github.com/vishalgosavi04/Enhostels/assets/124982672/ef20d1c5-7f10-46a4-9f72-a6411b18368c" width="300">
+<img src= "https://github.com/vishalgosavi04/Enhostels/assets/124982672/e7067505-1ebe-476d-8efe-1ad17cf130ce" width= "300">
+<img src= "https://github.com/vishalgosavi04/Enhostels/assets/124982672/462d2226-b27b-45e0-9025-be948ded0905" width= "300">
 
+### Add Hostel Page
+Add Hostel Page allows owners to add information about new hostels to the application.
 <img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/e57fc5db-c436-44c2-875d-0406da590173" width="300">
+
+### Add Mess Page
+It enables users to add details about new messes or restaurants.
 <img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/94effa87-1e55-4876-b248-04645c7eb0bf" width="300">
 
-<img src= "https://github.com/vishalgosavi04/Enhostels/assets/124982672/462d2226-b27b-45e0-9025-be948ded0905" width= "300">
 
 ## Steps to run app
 
