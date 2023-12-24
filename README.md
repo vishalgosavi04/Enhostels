@@ -27,7 +27,8 @@ Our first screen is the login screen  where we need your name, email address and
 ### Login Screen:-
 Then you get directed to the login screen where you have to enter the same credentials you used to sign-up.
 
-<img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/e57fc5db-c436-44c2-875d-0406da590173" width="300">
+<img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/f6d1105b-7fc4-42c6-a6ae-f3ee7c514259" width="300">
+
 
 ### Home Screen
 The main screen providing an overview of essential features and navigation options.
@@ -37,8 +38,7 @@ The main screen providing an overview of essential features and navigation optio
 <img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/e274aacd-b671-40b4-97af-6762f8aa4615" width="300">
 
 
-
-<img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/f6d1105b-7fc4-42c6-a6ae-f3ee7c514259" width="300">
+<img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/e57fc5db-c436-44c2-875d-0406da590173" width="300">
 <img src="https://github.com/vishalgosavi04/Enhostels/assets/124982672/94effa87-1e55-4876-b248-04645c7eb0bf" width="300">
 <img src= "https://github.com/vishalgosavi04/Enhostels/assets/124982672/488aa91d-a233-47f4-a118-b0804afb86c2" width= "300">
 <img src= "https://github.com/vishalgosavi04/Enhostels/assets/124982672/462d2226-b27b-45e0-9025-be948ded0905" width= "300">
