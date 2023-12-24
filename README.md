@@ -2,6 +2,17 @@
 
 Developed a user-friendly app using Flutter and Firebase database to provide college students and working professionals with real-time updates on food menus at nearby restaurants and messes. Integrated functionality to provide information about nearby hostels, making it convenient for users to find suitable accommodations. Enabled users to easily locate restaurants and hostels with just a few taps on their mobile devices.
 
+## Features
+
+- Hostel Information:
+- Easily find details about nearby hostels, helping users make informed decisions about accommodation.
+
+- Mess and Restaurant Details:
+- Explore information about messes and restaurants in the area, including their location, contact information, and more.
+
+- Dynamic Food Menus:
+- Stay updated on the changing food menus of messes. Only the mess owner has the authority to update the menu.
+- 
 ## screenshots
 Screenshots
 
